@@ -17,3 +17,15 @@
 17. Construa uma página onde o usuário digitará duas notas escolares. Caso a média seja abaixo de 4, o programa escreverá “Aluno Reprovado”. Caso a nota seja maior que 7, escreverá: “Aluno Aprovado Direto”. E, no caso em que a nota for maior que 4 e
 menor que 7 escreverá: “Aluno em Recuperação”. No último caso, o programa deve solicitar a nota de recuperação. Caso ela seja menor que 5, escrever: “Reprovado na Recuperação” ou, caso contrário, escrever “Aprovado na Recuperação”.
 18. Construa um jogo de pedra, papel e tesoura.
+19. Construa uma página/programa que exiba, na tela, os números de um a cem.
+20. Construa uma página/programa que exiba, na tela, a contagem regressiva de dez a zero.
+21. Construa uma página/programa que o usuário digitará um número e a aplicação completará o número digitado até completar cem.
+22. Construa uma página/programa onde o usuário digitará um número e o programa completará o número digitado até cem, apenas com números pares.
+23. Construa uma página/programa que exiba na tela todas as horas possíveis em um dia, utilizando estrutura de repetição.
+24. Construa uma página onde o usuário digitará um valor e o programa mostrará, na tela, a tabuada de multiplicação deste número.
+25. Construa uma página/programa que exiba a sequência de Fibonacci de zero até dois mil.
+26. Construa uma página/programa onde o usuário digitará um número, a página fará uma contagem regressiva até zero e, depois, contará de zero até o número que o usuário digitou.
+27. Construa uma página que só aceite notas escolares entre zero e dez (treinamento para controle de erros).
+
+
+
