@@ -26,6 +26,17 @@ menor que 7 escreverá: “Aluno em Recuperação”. No último caso, o program
 25. Construa uma página/programa que exiba a sequência de Fibonacci de zero até dois mil.
 26. Construa uma página/programa onde o usuário digitará um número, a página fará uma contagem regressiva até zero e, depois, contará de zero até o número que o usuário digitou.
 27. Construa uma página que só aceite notas escolares entre zero e dez (treinamento para controle de erros).
-
-
+28. Teste de Mesa : visualizar pasta Aula08.
+29. Teste de Mesa : visualizar pasta Aula08.
+30. Teste de Mesa : visualizar pasta Aula08.
+31. Teste de Mesa : visualizar pasta Aula08.
+32. Teste de Mesa : visualizar pasta Aula08.
+33. Construa um programa onde o usuário digitará a sua idade. Se a idade for menor de 18 anos, o programa entrará em uma função listando nomes de programas infantis. Caso seja maior de idade, entrará em uma outra função com lista de carros e seus
+respectivos preços.
+34. Construa um programa/página onde o usuário digitará o seu nome e a saída dele será: “Seja Bem-vindo(a), Nome do usuário“ com o nome do usuário (utilizar função).
+35. Construa uma página/programa onde o usuário digitará dois números, utilizando passagem de parâmetros e, dentro da função, irá calcular a soma desses dois números.
+36. Crie um jogo de par ou ímpar onde o computador irá gerar um número aleatório e o usuário irá digitar um número. Após digitar o número, o programa irá utilizar um vetor para resolver o jogo. Se a soma dos números for par, o usuário vence. Se for ímpar, o
+computador vence.
+37. Construa um programa/página onde o usuário irá digitar seu nome e cidade de onde está digitando. Essas informações passarão para uma função e, caso a cidade seja “Rio de Janeiro”, a resposta, além do nome da pessoa, escreverá “Seja Bem-vindo
+à Cidade Maravilhosa”. Caso contrário, exibirá apenas o nome e a cidade digitada (utilizar passagem de parâmetros).
 
