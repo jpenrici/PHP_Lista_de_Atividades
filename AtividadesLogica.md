@@ -26,17 +26,28 @@ menor que 7 escreverá: “Aluno em Recuperação”. No último caso, o program
 25. Construa uma página/programa que exiba a sequência de Fibonacci de zero até dois mil.
 26. Construa uma página/programa onde o usuário digitará um número, a página fará uma contagem regressiva até zero e, depois, contará de zero até o número que o usuário digitou.
 27. Construa uma página que só aceite notas escolares entre zero e dez (treinamento para controle de erros).
-28. Teste de Mesa : visualizar pasta Aula08.
-29. Teste de Mesa : visualizar pasta Aula08.
-30. Teste de Mesa : visualizar pasta Aula08.
-31. Teste de Mesa : visualizar pasta Aula08.
-32. Teste de Mesa : visualizar pasta Aula08.
+28. Teste de Mesa : visualizar pasta Aula07.
+29. Teste de Mesa : visualizar pasta Aula07.
+30. Teste de Mesa : visualizar pasta Aula07.
+31. Teste de Mesa : visualizar pasta Aula07.
+32. Teste de Mesa : visualizar pasta Aula07.
 33. Construa um programa onde o usuário digitará a sua idade. Se a idade for menor de 18 anos, o programa entrará em uma função listando nomes de programas infantis. Caso seja maior de idade, entrará em uma outra função com lista de carros e seus
 respectivos preços.
 34. Construa um programa/página onde o usuário digitará o seu nome e a saída dele será: “Seja Bem-vindo(a), Nome do usuário“ com o nome do usuário (utilizar função).
 35. Construa uma página/programa onde o usuário digitará dois números, utilizando passagem de parâmetros e, dentro da função, irá calcular a soma desses dois números.
 36. Crie um jogo de par ou ímpar onde o computador irá gerar um número aleatório e o usuário irá digitar um número. Após digitar o número, o programa irá utilizar um vetor para resolver o jogo. Se a soma dos números for par, o usuário vence. Se for ímpar, o
 computador vence.
-37. Construa um programa/página onde o usuário irá digitar seu nome e cidade de onde está digitando. Essas informações passarão para uma função e, caso a cidade seja “Rio de Janeiro”, a resposta, além do nome da pessoa, escreverá “Seja Bem-vindo
-à Cidade Maravilhosa”. Caso contrário, exibirá apenas o nome e a cidade digitada (utilizar passagem de parâmetros).
-
+37. Construa um programa/página onde o usuário irá digitar seu nome e cidade de onde está digitando. Essas informações passarão para uma função e, caso a cidade seja “Rio de Janeiro”, a resposta, além do nome da pessoa, escreverá “Seja Bem-vindo à Cidade Maravilhosa”. Caso contrário, exibirá apenas o nome e a cidade digitada (utilizar passagem de parâmetros).
+38. Teste de Mesa : visualizar pasta Aula08.
+39. Construa uma página/programa onde o usuário digitará seis números em um vetor e, depois, esses números devem ser exibidos na tela na ordem digitada.
+40. Construa uma página/programa onde o usuário digitará dez números e o programa somará e calculará a média dos números digitados.
+41. Construa uma página/programa onde o usuário digitará oito números, o programa escreverá na tela qual deles é o maior e qual deles é o menor.
+42. Construa um programa/página onde o usuário digitará dez números. O programa deverá calcular quantos deles são maiores que dez.
+43. Construa uma página/programa onde o usuário digitará sete números e o programa escreverá, na tela, quantos deles são pares e quantos são ímpares.
+44. Construa uma página/programa onde o usuário digitará cinco números e o programa deverá colocar esses números dentro do vetor em ordem crescente.
+45. Construa uma página/programa onde o usuário digitará o nome e a média de dez alunos e o programa escreverá, na tela, o nome de todos com a média acima ou igual
+a seis.
+46. Construa uma página/programa que o usuário digitará o nome e a idade de dez pessoas e o programa escreverá o nome do usuário mais novo.
+47. Construa uma página/programa onde o usuário digitará o nome, o telefone e a cidade de dez pessoas. O programa exibirá, na tela, o nome e o telefone das pessoas que moram em “Campo Grande”.
+48. Construa uma página/programa onde o usuário digitará o nome e o bairro de dez pessoas. O programa exibirá o nome e bairro das pessoas em ordem alfabética.
+49. Construa uma página onde o usuário digitará o nome e a média de cinco alunos e o programa só aceitará a média do aluno caso ela esteja entre zero e dez.
