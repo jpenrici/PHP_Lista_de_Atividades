@@ -51,3 +51,14 @@ a seis.
 47. Construa uma página/programa onde o usuário digitará o nome, o telefone e a cidade de dez pessoas. O programa exibirá, na tela, o nome e o telefone das pessoas que moram em “Campo Grande”.
 48. Construa uma página/programa onde o usuário digitará o nome e o bairro de dez pessoas. O programa exibirá o nome e bairro das pessoas em ordem alfabética.
 49. Construa uma página onde o usuário digitará o nome e a média de cinco alunos e o programa só aceitará a média do aluno caso ela esteja entre zero e dez.
+50. Construa uma matriz 2X2 e, como saída desse programa, a média e a soma dos valores digitados deverão ser calculadas.
+51. Construa um jogo Quadrado Mágico 3X3, no qual o usuário preencherá o vetor com números de um a nove (sem repetir números) e a soma de todas as linhas, colunas e diagonais será igual a quinze.
+52. Construa um programa/página onde o usuário irá criar uma classe com nome, idade e altura (em centímetros). O programa dirá se a pessoa é maior ou menor de idade.
+53. Refaça a atividade anterior utilizando cinco usuários.
+54. Construa uma página/programa cadastrando cinco funcionários de uma escola, sendo que dois deles são professores. Todos os funcionários terão cadastrados seus nomes e salários e, os professores, terão cadastrados a disciplina às quais lecionam.
+55. Continuando a atividade anterior, escreva o nome dos funcionários que ganham acima de R$ 2.000,00.
+56. De acordo com a atividade 54, escreva o nome de quem leciona “Matemática”.
+57. Continuando na atividade 54, escreva o nome de todos os funcionários e, ao lado dos professores, adicione a letra P.
+58. Ainda sobre a atividade 54, escreva o nome e o salário de todos os funcionários.
+59. Crie um programa/página onde, para você, faz-se necessário o uso de herança.
+60. Ainda sobre a atividade anterior, utilize funções pequenos relatórios sobre os dados que seriam cadastrados.
