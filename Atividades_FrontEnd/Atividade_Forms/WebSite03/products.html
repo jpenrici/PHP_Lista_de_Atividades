@@ -1,0 +1,160 @@
+<!--
+    Atividade:
+
+    1) Complete o código.
+    2) Aplique CSS para estilizar a Tabela.
+
+-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/table2.css">
+    <title>JWC</title>
+</head>
+
+<body>
+    <h1>Administração de Produtos</h1>
+    <hr>
+
+    <!--
+        
+    Complete o código inserindo uma tabela com 10 itens com a seguinte estrutura:
+
+    +--------------------+----------------+------------+------------------+--------+--------------+----------------------------+--------------------------------+
+    | Comandos (Botões)  | Identificador  | Produto    | Preço Unit. (R$) |  Qtde. | Desconto (%) | URL Imagem                 | Descrição                      |
+    +--------------------+----------------+------------+------------------+--------+--------------+----------------------------+--------------------------------+
+    | Editar  | Excluir  | 12345678901    | Item 1     | 300,00           |  180   | 8            | http://images.com/img1.png | Calçado preto com bordas azuis.|
+    +--------------------+----------------+------------+------------------+--------+--------------+----------------------------+--------------------------------+
+    | Editar  | Excluir  | 12345678910    | Item 2     |  80,00           |  100   | 3            | img/imagem2.png            | Pulseira prateada.             |
+    +--------------------+----------------+------------+------------------+--------+--------------+----------------------------+--------------------------------+
+    | Editar  | Excluir  | 12345678915    | Item 3     | 222,00           |  1000  | 10           | img/imagem3.png            | Chiclete de Hortelã            |
+    +--------------------+----------------+------------+------------------+--------+--------------+----------------------------+--------------------------------+
+    | Editar  | Excluir  | ...            | ....       | ...              |  ...   | ...          | ...                        | ...                            |
+    +--------------------+----------------+------------+------------------+--------+--------------+----------------------------+--------------------------------+        
+
+    Obs.: Os botões devem conter imagens simbólicas da ação.
+
+    -->
+
+    <div>
+        <table>
+            <tr>
+                <th>Comando</th>
+                <th>Identificador</th>
+                <th>Produto</th>
+                <th>Preço Unitário (R$)</th>
+                <th>Quantidade</th>
+                <th>Desconto (%)</th>
+                <th>URL Imagem</th>
+                <th>Descrição</th>
+            </tr>
+            <tr>
+                <td><button><img src="img/icons/icon1.svg" /><button><img src="img/icons/icon2.svg" /></button></td>
+                <td>1001</td>
+                <td>Bonsai Flamboyant Florido 15 anos</td>
+                <td>2200,00</td>
+                <td>100</td>
+                <td>10</td>
+                <td>img/bonsai-01.svg</td>
+                <td>Bonsai Flamboyant Florido 15 anos, Vaso Esmaltado Petro com Musgo</td>
+            </tr>
+            <tr>
+                <td><button><img src="img/icons/icon1.svg" /><button><img src="img/icons/icon2.svg" /></button></td>
+                <td>1002</td>
+                <td>Bonsai Flamboyant 10 anos</td>
+                <td>1800,00</td>
+                <td>200</td>
+                <td>10</td>
+                <td>img/bonsai-02.svg</td>
+                <td>Bonsai Flamboyant 10 anos, Vaso Esmaltado Petro com Musgo</td>
+            </tr>
+            <tr>
+                <td><button><img src="img/icons/icon1.svg" /><button><img src="img/icons/icon2.svg" /></button></td>
+                <td>1003</td>
+                <td>Bonsai Thuja 18 anos</td>
+                <td>2400,00</td>
+                <td>80</td>
+                <td>5</td>
+                <td>img/bonsai-03.svg</td>
+                <td>Bonsai Thuja 18 anos, Vaso Esmaltado Petro com Musgo</td>
+            </tr>
+            <tr>
+                <td><button><img src="img/icons/icon1.svg" /><button><img src="img/icons/icon2.svg" /></button></td>
+                <td>1004</td>
+                <td>Bonsai Pinus 30 anos</td>
+                <td>7000,00</td>
+                <td>55</td>
+                <td>2</td>
+                <td>img/bonsai-04.svg</td>
+                <td>Bonsai Pinus 30 anos, Vaso Esmaltado Petro com Musgo</td>
+            </tr>
+            <tr>
+                <td><button><img src="img/icons/icon1.svg" /><button><img src="img/icons/icon2.svg" /></button></td>
+                <td>1005</td>
+                <td>Bonsai Thuja 28 anos</td>
+                <td>5400,00</td>
+                <td>120</td>
+                <td>2</td>
+                <td>img/bonsai-05.svg</td>
+                <td>Bonsai Thuja 28 anos, Vaso Esmaltado Petro com Musgo</td>
+            </tr>
+            <tr>
+                <td><button><img src="img/icons/icon1.svg" /><button><img src="img/icons/icon2.svg" /></button></td>
+                <td>1006</td>
+                <td>Bonsai Piracanta 7 anos</td>
+                <td>320,00</td>
+                <td>200</td>
+                <td>10</td>
+                <td>img/bonsai-06.svg</td>
+                <td>Bonsai Piracanta 7 anos, Vaso Esmaltado Petro com Musgo</td>
+            </tr>
+            <tr>
+                <td><button><img src="img/icons/icon1.svg" /><button><img src="img/icons/icon2.svg" /></button></td>
+                <td>1007</td>
+                <td>Bonsai Piracanta Florido 7 anos</td>
+                <td>450,00</td>
+                <td>70</td>
+                <td>10</td>
+                <td>img/bonsai-07.svg</td>
+                <td>Bonsai Piracanta Florido 7 anos, Vaso Esmaltado Petro</td>
+            </tr>
+            <tr>
+                <td><button><img src="img/icons/icon1.svg" /><button><img src="img/icons/icon2.svg" /></button></td>
+                <td>1008</td>
+                <td>Bonsai Juniperus 22 Anos</td>
+                <td>8300,00</td>
+                <td>130</td>
+                <td>4</td>
+                <td>img/bonsai-08.svg</td>
+                <td>Bonsai Juniperus 22 Anos, Vaso Retangular Terracota</td>
+            </tr>
+            <tr>
+                <td><button><img src="img/icons/icon1.svg" /><button><img src="img/icons/icon2.svg" /></button></td>
+                <td>1009</td>
+                <td>Bonsai Juniperus 32 Anos</td>
+                <td>11850,00</td>
+                <td>10</td>
+                <td>3</td>
+                <td>img/bonsai-09.svg</td>
+                <td>Bonsai Juniperus 32 Anos, Vaso Retangular Terracota</td>
+            </tr>
+            <tr>
+                <td><button><img src="img/icons/icon1.svg" /><button><img src="img/icons/icon2.svg" /></button></td>
+                <td>1010</td>
+                <td>Bonsai Juniperus 25 Anos</td>
+                <td>9900,00</td>
+                <td>100</td>
+                <td>3</td>
+                <td>img/bonsai-10.svg</td>
+                <td>Bonsai Juniperus 25 Anos, Vaso Retangular Terracota</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+
+</html>

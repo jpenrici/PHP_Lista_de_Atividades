@@ -1,0 +1,30 @@
+table {
+    background-color: lightgoldenrodyellow;
+    border: 1px solid black;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+tr:hover {
+    background-color: coral;
+    color: white;
+}
+
+th {
+    background-color: coral;
+}
+
+td,
+th {
+    border: 1px solid rgb(68, 37, 9);
+}
+
+img {
+    width: 96px;
+    height: 96px;
+}
+
+.default {
+    text-align: left;
+    font-weight: bold;
+}
