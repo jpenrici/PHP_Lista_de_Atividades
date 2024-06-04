@@ -48,8 +48,8 @@
             <input type="text" name="cpf1" id="cpf1" placeholder="CPF sem pontuação" title="Exemplo: 12345678900"><br>
             <!-- Solução 02 -->
             <label for="cpf2" title="Solução 02">CPF:</label><br>
-            <input type="text" name="cpf2" id="cpf2" placeholder="Use XXX.XXX.XXX-XX" pattern=""
-                title="Exemplo: 123.456.789-00"><br>
+            <input type="text" name="cpf2" id="cpf2" placeholder="Use XXX.XXX.XXX-XX"
+                pattern="[0-9]{3}.[0-9]{3}.[0-9]{3}-[0-9]{2}" title="Exemplo: 123.456.789-00" required><br>
 
             <label for="dateofbirth">Data de Nascimento:</label><br>
             <input type="date" name="dateofbirth" id="dateofbirth" required><br>
@@ -102,7 +102,8 @@
             <div>
                 <!-- Solução usando <input> -->
                 <input type="reset" value="Limpar" title="Solução 02">
-                <input type="button" value="Salvar" onclick="onClickSave()" title="Solução 02">
+                <input type="button" value="Salvar" onclick="onClickSave()" title="Solução 02 : type='button'">
+                <input type="submit" value="Salvar" title="Solução 02 : type='submit'"> <!-- responde ao atributo "required" -->
             </div>
             <br>
 
