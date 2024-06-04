@@ -23,27 +23,99 @@
         
     Complete o código inserindo um Formulário para ser preenchido pelo Cliente, contendo:
 
-    1. Nome.
-    2. Sobrenome.
-    3. CPF.
-    4. Data de Nascimento.
-    5. Nacionalidade.
-    6. Cidade Natal.
-    7. Endereço Residencial.
-    8. Cidade.
-    9. Unidade Federativa.
-    10. Telefone particular.
-    11. Telefone do trabalho.
-    12. E-mail particular.
-    13. Botão para limpar os dados preenchidos. Sem JavaScript funcionando!
-    14. Botão para salvar o cadastro. Sem JavaScript funcionando!
-    
+    1. Unidade Federativa: Atualizar para utilizar o atributo <select>.
+    2. Estado Civil: Utilizar o input tipo "radio".
+    3. Preferência de Produtos: Utilizar o input tipo "checkbox".
+    4. Anexar Foto: Utilizar o input tipo "file".
+    5. Descrição Pessoal: Utilizar a tag <textarea>.
+
     Obs.:
         a) Usar os tipos corretos para a tag <input>.
         b) Usar o atributo "placeholder" quando necessário.
         b) Usar o atributo "required" para os dados que devem ser obrigatórios.
 
     -->
+
+    <div>
+        <form action="">
+            <label for="firstname">Nome:</label><br>
+            <input type="text" name="name" id="name" placeholder="Primeiro nome" required><br>
+            <label for="lastname">Sobrenome:</label><br>
+            <input type="text" name="lastname" id="lastname" placeholder="Sobrenome"><br>
+
+            <!-- Solução 01 -->
+            <label for="cpf1" title="Solução 01">CPF:</label><br>
+            <input type="text" name="cpf1" id="cpf1" placeholder="CPF sem pontuação" title="Exemplo: 12345678900"><br>
+            <!-- Solução 02 -->
+            <label for="cpf2" title="Solução 02">CPF:</label><br>
+            <input type="text" name="cpf2" id="cpf2" placeholder="Use XXX.XXX.XXX-XX" pattern=""
+                title="Exemplo: 123.456.789-00"><br>
+
+            <label for="dateofbirth">Data de Nascimento:</label><br>
+            <input type="date" name="dateofbirth" id="dateofbirth" required><br>
+            <label for="nationality">Nacionalidade:</label><br>
+            <input type="text" name="nationality" id="nationality" placeholder="Nacionalidade"><br>
+            <label for="hometown">Cidade Natal:</label><br>
+            <input type="text" name="hometown" id="hometown" placeholder="Cidade onde nasceu"><br>
+
+            <!-- Estado Civil -->
+            <!-- Completar Aqui -->
+            <!-- Fim do Estado Civil -->
+
+            <label for="address">Endereço:</label><br>
+            <input type="text" name="address" id="address" placeholder="Avenida/Rua e número"><br>
+            <label for="city">Cidade:</label><br>
+            <input type="text" name="city" id="city" placeholder="Cidade atual"><br>
+
+            <!-- Seleção de Unidade Federativa -->
+            <label for="uf">UF:</label><br>
+            <!-- Completar Aqui -->
+            <!-- Fim da Seleção de Unidade Federativa -->
+
+            <label for="privatephone">Telefone particular:</label><br>
+            <input type="tel" name="privatephone" id="privatephone" required><br>
+            <label for="workphone">Telefone do trabalho:</label><br>
+            <input type="tel" name="workphone" id="workphone"><br>
+            <label for="email">E-mail:</label><br>
+            <input type="email" name="email" id="email" required><br>
+
+            <!-- Preferência de Produtos -->
+            <!-- Completar Aqui -->
+            <!-- Fim da Preferência de Produtos -->
+
+            <!-- Descrição Pessoal -->
+            <!-- Completar Aqui -->
+            <!-- Fim da Descrição Pessoal -->
+
+            <!-- Anexar Arquivo de Foto -->
+            <!-- Completar Aqui -->
+            <!-- Fim de Anexar Arquivo de Foto -->
+
+            <hr>
+            <div>
+                <!-- Solução usando <button> -->
+                <button type="reset" title="Solução 01">Limpar</button>
+                <button type="button" onclick="onClickSave()" title="Solução 01">Salvar</button>
+            </div>
+            <br>
+
+            <div>
+                <!-- Solução usando <input> -->
+                <input type="reset" value="Limpar" title="Solução 02">
+                <input type="button" value="Salvar" onclick="onClickSave()" title="Solução 02">
+            </div>
+            <br>
+
+            <div>
+                <!-- Solução usando <a> -->
+                <a href="#" onclick="onClickSave()" title="Solução 03">Salvar cadastro.</a>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- Javascript -->
+    <script src="js/home.js"></script>
 
 </body>
 
