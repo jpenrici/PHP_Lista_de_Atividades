@@ -44,7 +44,7 @@
             <input type="text" name="lastname" id="lastname" placeholder="Sobrenome"><br>
 
             <!-- Solução 01 -->
-            <label for="cpf1" title="Solução 01">CPF:</label><br>
+            <label for="cpf1" title="Solução 01" required>CPF:</label><br>
             <input type="text" name="cpf1" id="cpf1" placeholder="CPF sem pontuação" title="Exemplo: 12345678900"><br>
             <!-- Solução 02 -->
             <label for="cpf2" title="Solução 02">CPF:</label><br>
@@ -59,7 +59,16 @@
             <input type="text" name="hometown" id="hometown" placeholder="Cidade onde nasceu"><br>
 
             <!-- Estado Civil -->
-            <!-- Completar Aqui -->
+            <label for="maritalstatus">Estado Civil:</label><br>
+            <input type="radio" name="maritalstatus" id="single" value="Solteiro">
+            <label for="single"> Solteiro(a)</label>
+            <input type="radio" name="maritalstatus" id="married" value="Casado">
+            <label for="married"> Casado(a)</label>
+            <input type="radio" name="maritalstatus" id="divorced" value="Divorciado">
+            <label for="divorced"> Divorciado(a)</label>
+            <input type="radio" name="maritalstatus" id="widower" value="Viúvo">
+            <label for="widower"> Viúvo(a)</label>
+            <br>
             <!-- Fim do Estado Civil -->
 
             <label for="address">Endereço:</label><br>
@@ -69,7 +78,36 @@
 
             <!-- Seleção de Unidade Federativa -->
             <label for="uf">UF:</label><br>
-            <!-- Completar Aqui -->
+            <select name="uf" id="uf">
+                <option value=#AC#>AC - Acre</option>
+                <option value=#AL#>AL - Alagoas</option>
+                <option value=#AP#>AP - Amapá</option>
+                <option value=#AM#>AM - Amazonas</option>
+                <option value=#BA#>BA - Bahia</option>
+                <option value=#CE#>CE - Ceará</option>
+                <option value=#DF#>DF - Distrito Federal</option>
+                <option value=#ES#>ES - Espírito Santo</option>
+                <option value=#GO#>GO - Goiás</option>
+                <option value=#MA#>MA - Maranhão</option>
+                <option value=#MT#>MT - Mato Grosso</option>
+                <option value=#MS#>MS - Mato Grosso do Sul</option>
+                <option value=#MG#>MG - Minas Gerais</option>
+                <option value=#PA#>PA - Pará</option>
+                <option value=#PB#>PB - Paraíba</option>
+                <option value=#PR#>PR - Paraná</option>
+                <option value=#PE#>PE - Pernambuco</option>
+                <option value=#PI#>PI - Piauí</option>
+                <option value=#RJ#>RJ - Rio de Janeiro</option>
+                <option value=#RN#>RN - Rio Grande do Norte</option>
+                <option value=#RS#>RS - Rio Grande do Sul</option>
+                <option value=#RO#>RO - Rondônia</option>
+                <option value=#RR#>RR - Roraima</option>
+                <option value=#SC#>SC - Santa Catarina</option>
+                <option value=#SP#>SP - São Paulo</option>
+                <option value=#SE#>SE - Sergipe</option>
+                <option value=#TO#>TO - Tocantins</option>
+            </select>
+            <br>
             <!-- Fim da Seleção de Unidade Federativa -->
 
             <label for="privatephone">Telefone particular:</label><br>
@@ -80,15 +118,26 @@
             <input type="email" name="email" id="email" required><br>
 
             <!-- Preferência de Produtos -->
-            <!-- Completar Aqui -->
+            <label>Preferência de Produtos:</label><br>
+            <input type="checkbox" name="produto1" id="produto1" value="Livros">
+            <label for="produto1">Livros</label>
+            <input type="checkbox" name="produto2" id="produto2" value="Material Esportivo">
+            <label for="produto2">Material Esportivo</label>
+            <input type="checkbox" name="produto3" id="produto3" value="Eletrodomésticos">
+            <label for="produto3">Eletrodomésticos</label>
+            <br>
             <!-- Fim da Preferência de Produtos -->
 
             <!-- Descrição Pessoal -->
-            <!-- Completar Aqui -->
+            <label for="personaldescription">Descrição Pessoal:</label><br>
+            <textarea name="personaldescription" id="personaldescription"
+                placeholder="Diga algo sobre você."></textarea>
+            <br>
             <!-- Fim da Descrição Pessoal -->
 
             <!-- Anexar Arquivo de Foto -->
-            <!-- Completar Aqui -->
+            <label for="photoarchive">Anexar Arquivo de Foto:</label><br>
+            <input type="file" name="photoarchive" id="photoarchive">
             <!-- Fim de Anexar Arquivo de Foto -->
 
             <hr>
