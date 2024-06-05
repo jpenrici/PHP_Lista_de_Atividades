@@ -7,8 +7,6 @@ function testarBtn() {
 }
 
 function criarParagrafo() {
-    // Completar aqui.
-
     document.getElementById("msg").innerHTML = "Estamos alterando a página dinamicamente!";
 
     // mensagem("Criar Parágrafo funcionando!");
@@ -18,12 +16,9 @@ function criarLista() {
     let qtdOpcoes = parseInt(document.getElementById("opcoes").value);
     console.log(qtdOpcoes);
 
-    let limite = parseInt(qtdOpcoes);
-
-    // Completar aqui.
     let output = "";
-    for (let i = 0; i < limite; i++) {
-        output += "<option value=\"v" + i + "\">Opção " + i + "</option>";
+    for (let i = 0; i < qtdOpcoes; i++) {
+        output += "<option value=\"Op" + i + "\">Opção " + i + "</option>";
     }
     document.getElementById("lista").innerHTML = output;
 
@@ -35,7 +30,6 @@ function criarTabela() {
     let colunas = parseInt(document.getElementById("colunas").value);
     console.log(linhas, colunas);
 
-    // Completar aqui.
     let output = "";
     for (let i = 0; i < linhas; i++) {
         output += "<tr>\n";
