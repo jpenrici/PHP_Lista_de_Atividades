@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JWC Pizzas :: Cardápio</title>
+</head>
+
+<body>
+    <h1>JWC Pizzas :: Cardápio</h1>
+    <hr>
+    <h2>Menu</h2>
+    <table id="menu"></table>
+    <hr>
+    <form>
+        <h2>Cadastro</h2>
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome"><br>
+        <label for="endereco">Endereço:</label>
+        <input type="text" name="endereco" id="endereco"><br>
+        <label for="telefone">Telefone:</label>
+        <input type="tel" name="telefone" id="telefone"><br>
+        <h2>Forma de Pagamento</h2>
+        <input type="radio" name="formadepagamento" id="pg1" value="credito">
+        <label for="pg1"> Cartão de Crédito</label>
+        <input type="radio" name="formadepagamento" id="pg2" value="debito">
+        <label for="pg2"> Cartão de Débito</label>
+        <input type="radio" name="formadepagamento" id="pg3" value="pix">
+        <label for="pg3"> Pix</label>
+    </form>
+    <hr>
+    <button type="button" onclick="confirmarPedido()">Confirmar Pedido</button>
+
+    <script src="../js/cardapio.js"></script>
+</body>
+
+</html>
