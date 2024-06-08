@@ -179,19 +179,27 @@ function validar(nome, endereco, telefone) {
     padrao = /^\+[0-9]+\([0-9]+\)[0-9]+\-[0-9]+$/g;
     let count = padrao.test(telefone);
 
-    // Telefone 2: (21)12345-1234
+    // Telefone 2: +5502112345-1234
+    padrao = /^\+[0-9]+\-[0-9]+$/g;
+    count += padrao.test(telefone);
+
+    // Telefone 3: +55021123451234
+    padrao = /^\+[0-9]+[0-9].$/g;
+    count += padrao.test(telefone);    
+
+    // Telefone 4: (21)12345-1234
     padrao = /^\([0-9]+\)[0-9]+\-[0-9]+$/g;
     count += padrao.test(telefone);
 
-    // Telefone 2: (21)123451234
+    // Telefone 5: (21)123451234
     padrao = /^\([0-9]+\)[0-9]+$/g;
     count += padrao.test(telefone);
 
-    // Telefone 3: 2112345-1234
+    // Telefone 6: 2112345-1234
     padrao = /^[0-9]+\-[0-9]+$/g;
     count += padrao.test(telefone);
 
-    // Telefone 4: 123451234
+    // Telefone 7: 123451234
     padrao = /^[0-9]+[0-9].$/g;
     count += padrao.test(telefone);
 
@@ -268,6 +276,8 @@ function testeValidar() {
     console.assert(validar(nome, endereco, "( 21) 91234 - 1234") == true);
     console.assert(validar(nome, endereco, "( 21) 91234   1234") == true);
     console.assert(validar(nome, endereco, "+55 (021) 91234 - 1234") == true);
+    console.assert(validar(nome, endereco, "+55 021 91234 - 1234") == true);
+    console.assert(validar(nome, endereco, "+55 021 91234 1234") == true);
 
     // Entrada válida possível 
     console.assert(validar("Fulano de Tal", "Rua Abc, nº 100 - Rio de Janeiro; RJ CEP 95244-444", "+55 (21) 91234-1234") == true);
