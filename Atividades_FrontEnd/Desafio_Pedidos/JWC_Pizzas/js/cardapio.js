@@ -37,7 +37,7 @@ function modelo() {
 }
 
 /**
- * Função monta uma Tabela genérica via Matriz 2D e altera o HTML Table com Id.
+ * Função monta uma Tabela genérica via Matriz 2D e altera o HTML Table pelo Id.
  */
 function criarTabela(matriz, id) {
     let linhas = "";
@@ -54,23 +54,31 @@ function criarTabela(matriz, id) {
 
 /**
  * Função atualiza dados do HTML Table "menu", calcula o total geral.
+ * Retorna lista de pedido.
  */
 function atualizar() {
     const pizzas = dados();
     let totalGeral = 0;
+    let pedido = "";
     for (i = 0; i < pizzas.length; i++) {
         const qtde = document.getElementById("qtde_" + i).value;  // Busca valor no cardapio.html
         const labelText = document.getElementById("total_" + i);  // Busca elemento no cardapio.html
         const calc = parseFloat(qtde) * parseFloat(pizzas[i].preco);
         totalGeral += calc;
         labelText.innerHTML = calc; // Atualiza cardapio.html
+        if (parseFloat(qtde) > 0) {
+            pedido += qtde + " pizza(s) " + pizzas[i].nome + "\n";
+        }
     }
     // console.log(totalGeral);
-    let texto = "Total Geral: " + totalGeral;
-    if (parseFloat(totalGeral) == 0) {
-        texto = "";
+    let texto = "";
+    if (parseFloat(totalGeral) > 0) {
+        texto = "Total Geral: " + totalGeral;
+        pedido += texto + "\n";
     }
     document.getElementById("totalGeral").innerHTML = texto;  // Atualiza cardapio.html
+
+    return pedido;
 }
 
 /**
@@ -84,9 +92,10 @@ function validar(nome, endereco, telefone) {
     }
 
     // Limpar entradas com espaços em branco.
-    nome = nome.replace(/\s/g, '');
-    endereco = endereco.replace(/\s/g, '');
-    telefone = telefone.replace(/\s/g, '');
+    let padrao = /\s/g; // Expressão regular literal.
+    nome = nome.replace(padrao, '');
+    endereco = endereco.replace(padrao, '');
+    telefone = telefone.replace(padrao, '');
 
     // Checar se há entradas vazias.
     if (nome == "" | endereco == "" | telefone == "") {
@@ -159,9 +168,38 @@ function validar(nome, endereco, telefone) {
 
     // Validação por contagem de caracteres.
     // Usando a propriedade Length da String.
+    if (telefone.length < 9 || telefone.length > 20) {
+        return false;
+    }
 
     // Validação por Expressões Regulares.
-    // Usando Regex com o método Match, Search.
+    // Usando Regex com o método Test, Match, Search.
+
+    // Telefone 1: +55(021)12345-1234
+    padrao = /^\+[0-9]+\([0-9]+\)[0-9]+\-[0-9]+$/g;
+    let count = padrao.test(telefone);
+
+    // Telefone 2: (21)12345-1234
+    padrao = /^\([0-9]+\)[0-9]+\-[0-9]+$/g;
+    count += padrao.test(telefone);
+
+    // Telefone 2: (21)123451234
+    padrao = /^\([0-9]+\)[0-9]+$/g;
+    count += padrao.test(telefone);
+
+    // Telefone 3: 2112345-1234
+    padrao = /^[0-9]+\-[0-9]+$/g;
+    count += padrao.test(telefone);
+
+    // Telefone 4: 123451234
+    padrao = /^[0-9]+[0-9].$/g;
+    count += padrao.test(telefone);
+
+    // console.log(telefone, count);
+    if (count < 1) {
+        // Se nenhum dos padrões foi encontrado.
+        return false;
+    }
 
     return true;
 }
@@ -170,8 +208,19 @@ function confirmarPedido() {
     const nome = document.getElementById("nome").value;
     const endereco = document.getElementById("endereco").value;
     const telefone = document.getElementById("telefone").value;
+    const formadepagamento = document.querySelector('input[name="formadepagamento"]:checked').value;
+
+    let pedido = atualizar();
+    if (pedido == "") {
+        window.alert("Nenhum pedido foi feito!");
+        return;
+    }
 
     if (validar(nome, endereco, telefone) /* == true */) {
+        if (pedido != "") {
+            pedido += nome + "\nLocal:" + endereco + "\nTel:" + telefone + "\nPago via:" + formadepagamento;
+            console.log(pedido);
+        }
         window.alert("Pedido confirmado!");
     } else {
         window.alert("Verifique os dados!");
@@ -180,39 +229,45 @@ function confirmarPedido() {
 
 function testeValidar() {
 
+    // Dados validos.
+    let nome = "nome";
+    let endereco = "endereço";
+    let tel = "012345679";
+
     // Teste Nome
-    console.assert(validar("", "1", "1") == false);
-    console.assert(validar(null, "1", "1") == false);
-    console.assert(validar(" ", "1", "1") == false);
-    console.assert(validar("Nome1", "1", "1") == false);
-    console.assert(validar("Nome@", "1", "1") == false);
-    console.assert(validar("Nome -", "1", "1") == false);
-    console.assert(validar("Nome ^", "1", "1") == false);
-    console.assert(validar("Nome >", "1", "1") == false);
-    console.assert(validar("Palhaço", "1", "1") == true);
-    console.assert(validar("Específico", "1", "1") == true);
-    console.assert(validar("Sant'anna", "1", "1") == true);
+    console.assert(validar("", endereco, tel) == false);
+    console.assert(validar(null, endereco, tel) == false);
+    console.assert(validar(" ", endereco, tel) == false);
+    console.assert(validar("Nome1", endereco, tel) == false);
+    console.assert(validar("Nome@", endereco, tel) == false);
+    console.assert(validar("Nome -", endereco, tel) == false);
+    console.assert(validar("Nome ^", endereco, tel) == false);
+    console.assert(validar("Nome >", endereco, tel) == false);
+    console.assert(validar("Palhaço", endereco, tel) == true);
+    console.assert(validar("Específico", endereco, tel) == true);
+    console.assert(validar("Sant'anna", endereco, tel) == true);
 
     // Teste Endereço
-    console.assert(validar("Nome", null, "1") == false);
-    console.assert(validar("Nome", " ", "1") == false);
-    console.assert(validar("Nome", "Rua @", "1") == false);
-    console.assert(validar("Nome", "Rua ?", "1") == false);
-    console.assert(validar("Nome", "Rua <", "1") == false);
-    console.assert(validar("Nome", "Rua Sant'anna", "1") == true);
-    console.assert(validar("Nome", "Apt/01", "1") == true);
-    console.assert(validar("Nome", "Apt:01", "+1") == true);
-    console.assert(validar("Nome", "Número 10", "1") == true);
-    console.assert(validar("Nome", "Nº 10", "1") == true);
-    console.assert(validar("Nome", "1ª A", "1") == true);
+    console.assert(validar(nome, null, tel) == false);
+    console.assert(validar(nome, " ", tel) == false);
+    console.assert(validar(nome, "Rua @", tel) == false);
+    console.assert(validar(nome, "Rua ?", tel) == false);
+    console.assert(validar(nome, "Rua <", tel) == false);
+    console.assert(validar(nome, "Rua Sant'anna", tel) == true);
+    console.assert(validar(nome, "Apt/01", tel) == true);
+    console.assert(validar(nome, "Apt:01", tel) == true);
+    console.assert(validar(nome, "Número 10", tel) == true);
+    console.assert(validar(nome, "Nº 10", tel) == true);
+    console.assert(validar(nome, "1ª A", tel) == true);
 
     // Teste Telefone
-    console.assert(validar("Nome", "1", null) == false);
-    console.assert(validar("Nome", "1", " ") == false);
-    console.assert(validar("Nome", "Rua", "[1]") == false);
-    console.assert(validar("Nome", "Rua", "21 91234-1234") == true);
-    console.assert(validar("Nome", "Rua", "(21) 91234-1234") == true);
-    console.assert(validar("Nome", "Rua", "+55 (021) 91234-1234") == true);
+    console.assert(validar(nome, endereco, null) == false);
+    console.assert(validar(nome, endereco, " ") == false);
+    console.assert(validar(nome, endereco, "[1]") == false);
+    console.assert(validar(nome, endereco, "21 91234 - 1234") == true);
+    console.assert(validar(nome, endereco, "( 21) 91234 - 1234") == true);
+    console.assert(validar(nome, endereco, "( 21) 91234   1234") == true);
+    console.assert(validar(nome, endereco, "+55 (021) 91234 - 1234") == true);
 
     // Entrada válida possível 
     console.assert(validar("Fulano de Tal", "Rua Abc, nº 100 - Rio de Janeiro; RJ CEP 95244-444", "+55 (21) 91234-1234") == true);
@@ -220,8 +275,8 @@ function testeValidar() {
     console.log("Teste finalizado!");
 }
 
-// Principal
-criarTabela(modelo(), "menu");
-
 // Exemplo de Testes
 testeValidar();
+
+// Principal
+criarTabela(modelo(), "menu");
