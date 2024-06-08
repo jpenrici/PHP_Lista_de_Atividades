@@ -37,9 +37,9 @@ function modelo() {
 }
 
 /**
- * Função monta uma Tabela via Matriz 2D e altera o HTML Table com Id "menu".
+ * Função monta uma Tabela genérica via Matriz 2D e altera o HTML Table com Id.
  */
-function tabelar(matriz) {
+function criarTabela(matriz, id) {
     let linhas = "";
     for (let i = 0; i < matriz.length; i++) {
         linhas += "<tr>\n";
@@ -49,11 +49,11 @@ function tabelar(matriz) {
         }
     }
     // console.log(linhas);
-    document.getElementById("menu").innerHTML = linhas;  // Atualiza cardapio.html
+    document.getElementById(id).innerHTML = linhas;  // Atualiza HTML
 }
 
 /**
- * Função atualiza dados do HTML Table, calcula o total geral.
+ * Função atualiza dados do HTML Table "menu", calcula o total geral.
  */
 function atualizar() {
     const pizzas = dados();
@@ -74,76 +74,92 @@ function atualizar() {
 }
 
 /**
- * Função de Validação de Cadastro.
+ * Função de Validação de Cadastro. EXEMPLO!
  */
 function validar(nome, endereco, telefone) {
-
-    // Checar entradas somente com espaços em branco.
-    // Usando métodos como Trim, Replace, por exemplo.
-
-    // Checar se há entradas vazias.
-    if (nome == "" | endereco == "" | telefone == "") {
-        return false;
-    }
 
     // Checar se há entradas nulas.
     if (nome == null | endereco == null | telefone == null) {
         return false;
     }
 
-    // Checar se é tipo String.
+    // Limpar entradas com espaços em branco.
+    nome = nome.replace(/\s/g, '');
+    endereco = endereco.replace(/\s/g, '');
+    telefone = telefone.replace(/\s/g, '');
+
+    // Checar se há entradas vazias.
+    if (nome == "" | endereco == "" | telefone == "") {
+        return false;
+    }
 
     // Checar entradas com caracteres estranhos.
 
     /**
-    * Função retorna true se texto conter ao menos um caracter da sequência de caracteres.
+    * Função retorna true se texto conter ao menos um caracter diferente da sequência de caracteres.
     */
-    let checar = function (texto, caracteres) {
+    let existeCaracteresEstranhos = function (texto, caracteres) {
         for (let i = 0; i < caracteres.length; i++) {
-            for (let j = 0; j < texto.length; j++) {
-                if (texto[j] == caracteres[i]) {
-                    return true; // Se encontrado.
-                }
-            }
+            texto = texto.replaceAll(caracteres[i], '');
         }
-        return false;
+        return texto.length > 0;
     }
 
+    // Construção manual.
     const acentos = "`´^~¨";
-    const aspas = "'\"";
-    const barras = "\\/";
+    const aspasDuplas = "\"";
+    const aspasSimples = "'";
+    const aspas = aspasSimples + aspasDuplas;
+    const asterisco = "*";
+    const barra = "/";
+    const barraInvertida = "\\";  // barra inversa, contrabarra
+    const barras = barra + barraInvertida;
+    const parenteses = "()";
     const chaves = "{}";
     const colchetes = "[]";
     const digitos = "01234567890";
     const letras = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const letrasEspeciais = "ãâáàäẽêéèëĩîíìïôõóòöũúùûüçÃÂÁÀÄẼÊÉÈËĨÎÍÌÏÔÕÓÒÖŨÚÙÛÜÇ";
-    const operadores = "*-+=";
-    const parenteses = "()";
-    const pontuacao = ".,;:!?";
-    const simbolos = "|@#$%&_ºª¹²³£¢¬§";
+    const somenteLetras = letras + letrasEspeciais;
+    const operadorAdicao = "+";
+    const operadorSubtracao = "-";
+    const operadorMultiplicacao = asterisco;
+    const operadorDivisao = barra;
+    const operadorIgual = "=";
+    const operadorMaior = ">";
+    const operadorMenor = "<";
+    const operadores = operadorAdicao + operadorSubtracao + operadorMultiplicacao + operadorDivisao + operadorIgual + operadorMaior + operadorMenor;
+    const ponto = ".";
+    const pontoEvirgula = ";";
+    const virgula = ",";
+    const doisPontos = ":";
+    const exclamacao = "!";
+    const interrogacao = "?";
+    const pontuacao = ponto + pontoEvirgula + virgula + doisPontos + exclamacao + interrogacao;
+    const underline = "_";
+    const simbolosGrau = "ºª";
+    const simbolosOutros = underline + "|@#$%&¹²³£¢¬§";
+    const simbolos = simbolosGrau + simbolosOutros;
 
-    const invalidos_nomes = acentos + barras + chaves + colchetes + digitos + operadores + parenteses + pontuacao + simbolos + "\"";
-    const invalidos_endereco = acentos + barras + chaves + colchetes + "*+=" + "!?" + "|@#$%&_¹²³£¢¬§";
-    const invalidos_telefone = acentos + aspas + barras + chaves + colchetes + letras + letrasEspeciais + pontuacao + simbolos + "*=";
+    const validos_nomes = aspasSimples + somenteLetras;
+    const validos_endereco = validos_nomes + digitos + operadorSubtracao + barra + ponto + pontoEvirgula + virgula + doisPontos + simbolosGrau;
+    const validos_telefone = digitos + parenteses + operadorAdicao + operadorSubtracao;
 
-    if (checar(nome, invalidos_nomes)) {
-        console.log("Erro: Nome com caracteres suspeitos.");
+    if (existeCaracteresEstranhos(nome, validos_nomes)) {
         return false;
     }
 
-    if (checar(endereco, invalidos_endereco)) {
-        console.log("Erro: Endereço com caracteres suspeitos.");
+    if (existeCaracteresEstranhos(endereco, validos_endereco)) {
         return false;
     }
 
-    if (checar(telefone, invalidos_telefone)) {
-        console.log("Erro: Telefone com caracteres suspeitos.");
+    if (existeCaracteresEstranhos(telefone, validos_telefone)) {
         return false;
     }
 
     // Validação por contagem de caracteres.
     // Usando a propriedade Length da String.
-    
+
     // Validação por Expressões Regulares.
     // Usando Regex com o método Match, Search.
 
@@ -162,19 +178,50 @@ function confirmarPedido() {
     }
 }
 
+function testeValidar() {
+
+    // Teste Nome
+    console.assert(validar("", "1", "1") == false);
+    console.assert(validar(null, "1", "1") == false);
+    console.assert(validar(" ", "1", "1") == false);
+    console.assert(validar("Nome1", "1", "1") == false);
+    console.assert(validar("Nome@", "1", "1") == false);
+    console.assert(validar("Nome -", "1", "1") == false);
+    console.assert(validar("Nome ^", "1", "1") == false);
+    console.assert(validar("Nome >", "1", "1") == false);
+    console.assert(validar("Palhaço", "1", "1") == true);
+    console.assert(validar("Específico", "1", "1") == true);
+    console.assert(validar("Sant'anna", "1", "1") == true);
+
+    // Teste Endereço
+    console.assert(validar("Nome", null, "1") == false);
+    console.assert(validar("Nome", " ", "1") == false);
+    console.assert(validar("Nome", "Rua @", "1") == false);
+    console.assert(validar("Nome", "Rua ?", "1") == false);
+    console.assert(validar("Nome", "Rua <", "1") == false);
+    console.assert(validar("Nome", "Rua Sant'anna", "1") == true);
+    console.assert(validar("Nome", "Apt/01", "1") == true);
+    console.assert(validar("Nome", "Apt:01", "+1") == true);
+    console.assert(validar("Nome", "Número 10", "1") == true);
+    console.assert(validar("Nome", "Nº 10", "1") == true);
+    console.assert(validar("Nome", "1ª A", "1") == true);
+
+    // Teste Telefone
+    console.assert(validar("Nome", "1", null) == false);
+    console.assert(validar("Nome", "1", " ") == false);
+    console.assert(validar("Nome", "Rua", "[1]") == false);
+    console.assert(validar("Nome", "Rua", "21 91234-1234") == true);
+    console.assert(validar("Nome", "Rua", "(21) 91234-1234") == true);
+    console.assert(validar("Nome", "Rua", "+55 (021) 91234-1234") == true);
+
+    // Entrada válida possível 
+    console.assert(validar("Fulano de Tal", "Rua Abc, nº 100 - Rio de Janeiro; RJ CEP 95244-444", "+55 (21) 91234-1234") == true);
+
+    console.log("Teste finalizado!");
+}
+
 // Principal
-tabelar(modelo());
+criarTabela(modelo(), "menu");
 
 // Exemplo de Testes
-// tabelar([["Campo 1", "Campo 2"], ["Valor 1", "Valor 2"]]);
-// console.log(checar("12", "ab")); // Falso.
-// validar("abc1", "1", "1");  // Erro no nome.
-// validar("abc@", "1", "1");  // Erro no nome.
-// validar("ab -", "1", "1");  // Erro no nome.
-// validar("ab ´", "1", "1");  // Erro no nome.
-// validar("abc", "Rua @", "1");  // Erro no endereço.
-// validar("abc", "Rua ?", "1");  // Erro no endereço.
-// validar("abc", "Rua <", "1");  // Erro no endereço.
-// validar("abc", "Rua 1", "[1]");  // Erro no telefone.
-validar("Fulano de Tal", "Rua Abc, nº 100 - Rio de Janeiro; RJ", "+55 (21) 9123-12345"); // Validado.
-console.log("Teste Terminado!");
+testeValidar();
