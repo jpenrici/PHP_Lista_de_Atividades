@@ -5,10 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JWC Pizzas :: Cardápio</title>
+
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="../css/cardapio.css">
+    <link rel="stylesheet" href="../css/carrossel.css">
+
 </head>
 
 <body>
     <h1>JWC Pizzas :: Cardápio</h1>
+    <hr>
+    <h2>Destaques</h2>
+    <div class="slideshow-container">
+        <div class="slide">
+            <img src="../assets/img/pizza.svg" alt="Produto 0" title="Produto 0" />
+        </div>
+        <div class="slide">
+            <img src="../assets/img/pizza1.svg" alt="Produto 1" title="Produto 1" />
+        </div>
+        <div class="slide">
+            <img src="../assets/img/pizza2.svg" alt="Produto 2" title="Produto 2" />
+        </div>
+        <div class="slide">
+            <img src="../assets/img/pizza3.svg" alt="Produto 3" title="Produto 3" />
+        </div>
+        <button class="prev" onclick="mover(-1)">&#10094;</button> <!-- &#10094; : Símbolo < --> 
+        <button class="next" onclick="mover(1)">&#10095;</button>  <!-- &#10095; : Símbolo > --> 
+    </div>
     <hr>
     <h2>Menu</h2>
     <table id="menu"></table>
@@ -23,17 +46,19 @@
         <label for="telefone">Telefone:</label>
         <input type="tel" name="telefone" id="telefone"><br>
         <h2>Forma de Pagamento</h2>
-        <input type="radio" name="formadepagamento" id="pg1" value="credito">
-        <label for="pg1"> Cartão de Crédito</label>
+        <input type="radio" name="formadepagamento" id="pg3" value="pix" checked>
+        <label for="pg3"> Pix</label>
         <input type="radio" name="formadepagamento" id="pg2" value="debito">
         <label for="pg2"> Cartão de Débito</label>
-        <input type="radio" name="formadepagamento" id="pg3" value="pix">
-        <label for="pg3"> Pix</label>
+        <input type="radio" name="formadepagamento" id="pg1" value="credito">
+        <label for="pg1"> Cartão de Crédito</label>
     </form>
     <hr>
     <button type="button" onclick="confirmarPedido()">Confirmar Pedido</button>
 
+    <!-- CUSTOM JS -->
     <script src="../js/cardapio.js"></script>
+    <script src="../js/carrossel.js"></script>
 </body>
 
 </html>

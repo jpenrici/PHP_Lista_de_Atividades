@@ -1,3 +1,9 @@
+// Exemplo de Testes
+testeValidar();
+
+// Principal
+criarTabela(modelo(), "menu");
+
 /**
  * Função retorna Lista de Pizzas (Matriz 2D de Objetos).
  */
@@ -284,9 +290,3 @@ function testeValidar() {
 
     console.log("Teste finalizado!");
 }
-
-// Exemplo de Testes
-testeValidar();
-
-// Principal
-criarTabela(modelo(), "menu");
