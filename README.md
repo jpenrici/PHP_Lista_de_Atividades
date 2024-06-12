@@ -5,7 +5,6 @@ Repositório temporário para armazenamento de Atividades.<br>
 # Dica
 
 Faça o download, clone ou atualize o repositório para obter os exercícios resolvidos.<br>
-Utilize o diretório Template como base de desenvolvimento das novas atividades. Faça cópia e renomeie o diretório antes de codificar.<br>
 
 ## Trabalhando com o repositório via Download
 
