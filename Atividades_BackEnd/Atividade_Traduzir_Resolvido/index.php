@@ -1,8 +1,3 @@
-<!--
-    Observe que o script PHP para ser interpretado (executado),
-    é necessário mudar a extensão ".html" para ".php"!
--->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +19,14 @@
     -->
     <?php 
         // Escreva aqui código equivalente.
-        
+        $valorDoSalario = "1640";
+        $valeTransporte = floatval($valorDoSalario) * 0.06;
+        $planoDeSaude = floatval($valorDoSalario) * 0.03;
+        $valorDoSalarioLiquido = $valorDoSalario - $valeTransporte - $planoDeSaude;
+        $mensagem = "Salário: " . $valorDoSalario . "<br>Vale-transporte: " . $valeTransporte . "<br>Plano de saúde: " . $planoDeSaude
+            . "<br>Saldo: " . $valorDoSalarioLiquido;
+
+        echo "$mensagem";
     ?>
 
     <hr>
