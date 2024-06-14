@@ -17,7 +17,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atividade Variáveis</title>
+    <title>Atividades BackEnd</title>
 </head>
 
 <body>
@@ -29,7 +29,7 @@
     <!--
     1.
         Declare a variável Resultado.
-        Atribua no Resultado o valor do tipo string: "<p>Olá Desenvolvedor PHP!</p>".
+        Atribua ao Resultado o valor do tipo string: "<p>Olá Desenvolvedor PHP!</p>".
         Exiba o resultado neste HTML.
     -->
     <?php
@@ -42,7 +42,7 @@
     2.
         Declare as variáveis Nome, Resultado.
         Atribua em Nome: o seu nome.
-        Atribua no Resultado: "Bem-vindo! Olá, Nome!", usando a variável Nome.
+        Atribua ao Resultado: "Bem-vindo! Olá, Nome!", usando a variável Nome.
         Exiba o resultado neste HTML.
     -->
     <?php
@@ -54,9 +54,9 @@
     <!--
     3.
         Declare as variáveis Valor, Desconto, Resultado.
-        Atribua no Resultado o cálculo que aplique o desconto no valor. Crie valores para teste.
+        Atribua ao Resultado o cálculo que aplique o desconto no valor. Crie valores para teste.
         Exiba o resultado na forma de parágrafo neste HTML.
-        Exiba o resultado na forma literal. Por exemplo, "O valor igual a 10 é 10% do valor 100.".
+        Exiba o resultado no formato texto. Por exemplo, "O valor igual a 10 é 10% do valor 100.".
     -->
     <?php
         // Escreva aqui o código.
@@ -67,9 +67,9 @@
     <!--
     4.
         Declare as variáveis Velocidade, Resultado.
-        Atribua no Resultado o cálculo da conversão de m/s para km/h, usando a Velocidade.
+        Atribua ao Resultado o cálculo da conversão de m/s para km/h, usando a Velocidade.
         Exiba o resultado na forma de parágrafo e formatação negrito para o valor numérico com a unidade.
-        Exiba o resultado como informação atrativa!
+        Exiba o resultado como informação atrativa em formato texto!
     -->
     <?php
         // Escreva aqui o código.
@@ -80,9 +80,9 @@
     <!--
     5.
         Declare as variáveis Comprimento, Largura, Altura, Volume (Resultado).
-        Atribua no Resultado o cálculo do volume de uma caixa retangular.
+        Atribua ao Resultado o cálculo do volume de uma caixa retangular.
         Exiba o resultado na forma de parágrafo e formatação itálico.
-        Exiba o resultado como informação atrativa!
+        Exiba o resultado como informação atrativa em formato texto!
     -->
     <?php
         // Escreva aqui o código.
@@ -93,9 +93,9 @@
     <!--
     6.
         Declare as variáveis Comprimento, Largura, Altura, Volume (Resultado).
-        Atribua no Resultado o cálculo do volume de uma pirâmide.
+        Atribua ao Resultado o cálculo do volume de uma pirâmide.
         Exiba o resultado na forma de parágrafo e formatação itálico e cor da fonte azul.
-        Exiba o resultado como informação atrativa!
+        Exiba o resultado como informação atrativa em formato texto!
     -->
     <?php
         // Escreva aqui o código.
@@ -106,7 +106,7 @@
     <!--
     7.
         Declare a variável Resultado.
-        Atribua no Resultado o valor do tipo string para construir uma lista ordenada,
+        Atribua ao Resultado o valor do tipo string para construir uma lista ordenada,
         contendo as 20 linguagens de programação mais utilizadas segundo o site https://www.tiobe.com/.
         Exiba o resultado neste HTML.
     -->
@@ -119,7 +119,7 @@
     <!--
     8.
         Declare a variável Resultado.
-        Atribua no Resultado o valor do tipo string para construir uma tabela
+        Atribua ao Resultado o valor do tipo string para construir uma tabela
         para listar 5 marcas de liquidificador, com nome, fabricante, preço.
         Exiba o resultado neste HTML.
     -->
@@ -134,9 +134,9 @@
     <!--
     9.
         Declare as variáveis Nota1, Nota2, Nota3, Nota4, Nota5 e Média (Resultado).
-        Atribua no Resultado o cálculo da média das notas.
+        Atribua ao Resultado o cálculo da média das notas.
         Exiba o resultado na forma de parágrafo, indicando se o aluno está reprovado (nota menor que seis) ou aprovado.
-        Exiba o resultado como informação atrativa!
+        Exiba o resultado como informação atrativa em formato texto!
     -->
     <?php
         // Escreva aqui o código.
@@ -150,7 +150,7 @@
         Atribua no Resultado o cálculo do IMC.
         Crie valores para teste.
         Exiba o resultado na forma de parágrafo, formatando a resposta em cores conforme a classificação IMC.
-        Exiba o resultado como informação atrativa!
+        Exiba o resultado como informação atrativa em formato texto!
     -->
     <?php
         // Escreva aqui o código.
