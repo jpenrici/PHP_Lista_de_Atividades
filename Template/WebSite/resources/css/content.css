@@ -1,0 +1,65 @@
+/* Content */
+.content {
+    padding: 5px;
+}
+
+.column {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+}
+
+.row {
+    margin: 0 -5px;
+    padding-bottom: 16px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.row h2 {
+    padding-left: 12px;
+}
+
+.card {
+    padding: 18px;
+    text-align: left;
+}
+
+.card p.title {
+    font-size: large;
+    font-weight: bold;
+}
+
+.card p.description {
+    font-size: smaller;
+}
+
+.card a.readmore {
+    float: right;
+    font-size: smaller;
+}
+
+.fakeimage {
+    background-color: #aaa;
+    width: 100%;
+    height: 256px;
+    padding: 5px;
+}
+
+.newsletter {
+    height: 300px;
+    padding: 100px;
+    text-align: center;
+    background-color: rgb(73, 43, 43);
+    color: white;
+}
+
+/* 
+
+No responsive styling handling in this build!
+
+*/
