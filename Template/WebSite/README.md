@@ -4,7 +4,7 @@ Este diretório é um modelo básico para a estrutura de um simples Website.<br>
 Não existe uma regra específica para organizar e nomear as pastas, modifique quando necessário.<br>
 
 Instale no servidor local e inicie o acesso pela URL:<br>
-http://localhost/WebSite/public/index.html
+http://localhost/WebSite/index.html
 
 ## Requerimentos
 
