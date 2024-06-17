@@ -44,7 +44,7 @@
     <!--
     2.
         Utilize o comando For em estrutura simples (único loop) para exibir o resultado
-        dos 15 primeiros números da sequência que segue está lógica: 3, 6, 18, 4, 8, 12, ... .
+        dos 15 primeiros números da sequência que segue está lógica: 3, 6, 18, 4, 8, 24, 5, 10, 30, 6, 12, 36 ... .
         Exiba o resultado neste HTML em formato amigável, organizado!
         Mostre se possível como os cálculos estão sendo executados.
     -->
