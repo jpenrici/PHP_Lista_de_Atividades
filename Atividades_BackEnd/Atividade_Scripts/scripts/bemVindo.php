@@ -1,0 +1,3 @@
+<?php
+
+    $mensagem = "Bem-Vindo!";
