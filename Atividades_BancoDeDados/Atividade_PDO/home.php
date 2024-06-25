@@ -22,14 +22,20 @@
 
                 Obs:
                     Para testes iniciais:
-                        product : sem primary key.
-                        id : sem auto incremento.
+                        product : sem chave primária.
+                        id      : sem auto incremento.
+
 
         Para está atividade é necessário um ambiente de Localhost.
 
         Fontes úteis:
             https://www.php.net/docs.php
             https://www.w3schools.com/php/default.asp
+
+            https://www.php.net/manual/pt_BR/book.pdo.php
+            https://www.php.net/manual/pt_BR/pdo.exec.php
+            https://www.php.net/manual/pt_BR/pdo.query.php
+            https://www.php.net/manual/pt_BR/pdostatement.fetch.php
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -57,8 +63,8 @@
 
         // Conectar com o BD usando PDO (PHP Data Objects).
         try {
-            $conn = new PDO("mysql:host=$hostname;dbname=$dbname", $user, $password);
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $pdo = new PDO("mysql:host=$hostname;dbname=$dbname", $user, $password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo "Conexão bem sucedida!<br>";
         } catch(PDOException $e) {
             echo "Erro: " . $e->getMessage();
@@ -66,15 +72,17 @@
 
         // Inserir dados na Tabela "products".
         
+        // Campos
         $id          = 1;
         $name        = "Produto 1";
-        $description  = "Descrição do produto 1";
+        $description = "Descrição do produto 1";
         $price       = 19.90;
         $discount    = 5;
         $quantity    = 10;
-        $image       = "";
+        $image       = "https://www.php.net/images/logos/new-php-logo.svg";
         $category_id = "1";    
 
+        // SQL
         $sql = "INSERT INTO `product` (`id`, `name`, `description`, `price`, `discount`, `quantity`, `image`, `createdAt`, `updatedAt`, `category_id`) ";
         $sql .= "VALUES ('" . $id . "', '" . $name . "', '" . $description . "', '" . $price . "', '" . $discount . "', '" . $quantity . "', '" . $image;
         $sql .= "', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '" . $category_id . "');";
@@ -82,8 +90,14 @@
         // echo $sql;
 
         try {
-            $conn->exec($sql);
+            // Executando o comando SQL uma vez.
+            $pdo->exec($sql); // Executa uma instrução SQL, retornando o número de linhas afetadas pela instrução.
             echo "Novo dado inserido!<br>";
+            // Executando o mesmo comando SQL, várias vezes. Atenção ao usar loops!
+            for ($i = 0; $i < 4; $i++) {
+                $pdo->exec($sql);
+                echo "Novo dado inserido!<br>";
+            }
         } catch(PDOException $e) {
             echo "Erro: " . $e->getMessage();
         }
@@ -91,32 +105,36 @@
         // Listar todos os dados inseridos.
 
         try {
+            // SQL
+            $sql = "SELECT * FROM `product`;";
             // Consulta
-            $result = $conn->query("SELECT * FROM `product`;");
+            $result = $pdo->query($sql);   // Prepara e executa uma instrução SQL em uma única chamada de função, retornando um objeto PDOStatement.
             if ($result) {
-                // Preparar
-                $total = $result->rowCount();
-                $htmlTable = "<table border = '1'>";
+                // Preparar exibição.
+                $total = $result->rowCount();   // rowCount(): método retorna quantidade de linhas.
+                $htmlTable  = "<table border = '1'>";
                 $htmlTable .= "<th>id</th><th>name</th><th>description</th><th>price</th><th>discount</th>
                                <th>quantity</th><th>image</th><th>createdAt</th><th>updatedAt</th><th>category_id</th>";
+                // PDO::FETCH_ASSOC: retorna um array indexado pelo nome da coluna como retornada no resultado.
+                // fetch()         : método de busca.
                 while($row = $result->fetch(PDO::FETCH_ASSOC)) {
                     $htmlTable .= "<tr>";
-                    $htmlTable .= "<td>" . $row['id']          . "</td>";
-                    $htmlTable .= "<td>" . $row['name']        . "</td>";
-                    $htmlTable .= "<td>" . $row['description'] . "</td>";
-                    $htmlTable .= "<td>" . $row['price']       . "</td>";
-                    $htmlTable .= "<td>" . $row['discount']    . "</td>";
-                    $htmlTable .= "<td>" . $row['quantity']    . "</td>";
-                    $htmlTable .= "<td>" . $row['image']       . "</td>";
-                    $htmlTable .= "<td>" . $row['createdAt']   . "</td>";
-                    $htmlTable .= "<td>" . $row['updatedAt']   . "</td>";
-                    $htmlTable .= "<td>" . $row['category_id'] . "</td>";
+                    $htmlTable .= "<td>" . $row['id']              . "</td>";
+                    $htmlTable .= "<td>" . $row['name']            . "</td>";
+                    $htmlTable .= "<td>" . $row['description']     . "</td>";
+                    $htmlTable .= "<td>" . $row['price']           . "</td>";
+                    $htmlTable .= "<td>" . $row['discount']        . "</td>";
+                    $htmlTable .= "<td>" . $row['quantity']        . "</td>";
+                    $htmlTable .= "<td><img src='" . $row['image'] . "' width='24px'></td>";
+                    $htmlTable .= "<td>" . $row['createdAt']       . "</td>";
+                    $htmlTable .= "<td>" . $row['updatedAt']       . "</td>";
+                    $htmlTable .= "<td>" . $row['category_id']     . "</td>";
                     $htmlTable .= "</tr>";
                 }
                 $htmlTable .= "</table>";
 
                 // Exibir
-                echo "Encontrados $total itens na Tabela 'product'.<br>";
+                echo "<p>Encontrados $total itens na Tabela 'product'.</p>";
                 echo $htmlTable;
             }
           } catch(PDOException $e) {
@@ -130,11 +148,19 @@
         // Atualizar dado.
 
         // Deletar dado.
+        try {
+            // SQL
+            $sql = "DELETE FROM `product` WHERE `id`='1';";
+            $result = $pdo->exec($sql);
+            echo "$result registros deletados.<br>";
+        } catch(PDOException $e) {
+            echo "Erro: " . $e->getMessage();
+        }
 
         // Pesquisar dados.
 
         // Desconectar o Banco de Dados.
-        $conn = null;
+        $pdo = null;
         
         // Mensagem final de teste.
         echo "<p>PHP Finalizado!</p>";

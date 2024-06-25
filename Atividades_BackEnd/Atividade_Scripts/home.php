@@ -30,28 +30,28 @@
         $diretorio = "./scripts/";
 
         // Testes Include
-        include "bemVindo.php";
+        include $diretorio . "bemVindo.php";
 
         echo $mensagem;
         $novaMensagem = "<p style='color: red;'>" . $mensagem . "</p>";
         echo $novaMensagem;
 
-        include_once "bemVindoUsuario.php";
+        include_once $diretorio . "bemVindoUsuario.php";
         $outraMensagem = bemVindo("Desenvolvedor PHP");
         echo "<p style='color: #FF30A0;'>" . $outraMensagem . "</p>";
 
-        $minhaCofiguracao = include "configuracao.php";
+        $minhaCofiguracao = include $diretorio . "configuracao.php";
         var_dump($minhaCofiguracao);
 
-        include "usuarios1.php"; // Arquivo inexistente.
+        include $diretorio . "usuarios1.php"; // Arquivo inexistente. Renderização continua!
         echo "<hr>";
 
         // Testes Require
-        require_once "tabela.html";
-        require      "tabela.html";
-        require_once "tabela.html";
+        require_once $diretorio . "tabela.html";
+        require      $diretorio . "tabela.html";
+        require_once $diretorio . "tabela.html";
 
-        require "usuarios1.php"; // Arquivo inexistente.
+        // require $diretorio . "usuarios1.php"; // Arquivo inexistente. Renderização cancelada!
         echo "<hr>";
 
         echo "<h4>Atividade concluída!</h4>";
