@@ -20,6 +20,11 @@
                         `category_id` int NOT NULL
                     )
 
+                Obs:
+                    Para testes iniciais:
+                        product : sem primary key.
+                        id : sem auto incremento.
+
         Para está atividade é necessário um ambiente de Localhost.
 
         Fontes úteis:
@@ -43,17 +48,80 @@
     <?php
 
         /*
-            ETAPA 01 - 24/06/20224
+            ETAPA 01
         */
 
         // Incluir configuração do Banco de Dados.
+        require "./config/config.php";
+        // var_dump($database);
 
         // Conectar com o BD usando PDO (PHP Data Objects).
+        try {
+            $conn = new PDO("mysql:host=$hostname;dbname=$dbname", $user, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Conexão bem sucedida!<br>";
+        } catch(PDOException $e) {
+            echo "Erro: " . $e->getMessage();
+        }
 
         // Inserir dados na Tabela "products".
+        
+        $id          = 1;
+        $name        = "Produto 1";
+        $description  = "Descrição do produto 1";
+        $price       = 19.90;
+        $discount    = 5;
+        $quantity    = 10;
+        $image       = "";
+        $category_id = "1";    
 
+        $sql = "INSERT INTO `product` (`id`, `name`, `description`, `price`, `discount`, `quantity`, `image`, `createdAt`, `updatedAt`, `category_id`) ";
+        $sql .= "VALUES ('" . $id . "', '" . $name . "', '" . $description . "', '" . $price . "', '" . $discount . "', '" . $quantity . "', '" . $image;
+        $sql .= "', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '" . $category_id . "');";
+            
+        // echo $sql;
+
+        try {
+            $conn->exec($sql);
+            echo "Novo dado inserido!<br>";
+        } catch(PDOException $e) {
+            echo "Erro: " . $e->getMessage();
+        }
+        
         // Listar todos os dados inseridos.
 
+        try {
+            // Consulta
+            $result = $conn->query("SELECT * FROM `product`;");
+            if ($result) {
+                // Preparar
+                $total = $result->rowCount();
+                $htmlTable = "<table border = '1'>";
+                $htmlTable .= "<th>id</th><th>name</th><th>description</th><th>price</th><th>discount</th>
+                               <th>quantity</th><th>image</th><th>createdAt</th><th>updatedAt</th><th>category_id</th>";
+                while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                    $htmlTable .= "<tr>";
+                    $htmlTable .= "<td>" . $row['id']          . "</td>";
+                    $htmlTable .= "<td>" . $row['name']        . "</td>";
+                    $htmlTable .= "<td>" . $row['description'] . "</td>";
+                    $htmlTable .= "<td>" . $row['price']       . "</td>";
+                    $htmlTable .= "<td>" . $row['discount']    . "</td>";
+                    $htmlTable .= "<td>" . $row['quantity']    . "</td>";
+                    $htmlTable .= "<td>" . $row['image']       . "</td>";
+                    $htmlTable .= "<td>" . $row['createdAt']   . "</td>";
+                    $htmlTable .= "<td>" . $row['updatedAt']   . "</td>";
+                    $htmlTable .= "<td>" . $row['category_id'] . "</td>";
+                    $htmlTable .= "</tr>";
+                }
+                $htmlTable .= "</table>";
+
+                // Exibir
+                echo "Encontrados $total itens na Tabela 'product'.<br>";
+                echo $htmlTable;
+            }
+          } catch(PDOException $e) {
+            echo "Erro: " . $e->getMessage();
+          }
 
         /*
             ETAPA 02 - 25/06/2024
@@ -65,8 +133,11 @@
 
         // Pesquisar dados.
 
+        // Desconectar o Banco de Dados.
+        $conn = null;
         
-        echo "PHP Finalizado!";
+        // Mensagem final de teste.
+        echo "<p>PHP Finalizado!</p>";
     ?>
 
 </body>
