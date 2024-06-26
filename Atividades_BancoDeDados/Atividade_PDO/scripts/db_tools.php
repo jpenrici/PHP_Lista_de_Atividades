@@ -42,71 +42,59 @@ function command($pdo, $sql)
 }
 
 // Função Inserir
-function insert($hostname, $dbname, $user, $password, $table, $data) 
+function insert($pdo, $table, $data) 
 {
-    $limit = count($data[0]);
-    $sql = "INSERT INTO `product` (";
-    $names = "";
+    $sql    = "INSERT INTO `" . $table . "` ( ";
+    $names  = "";
     $values = "";
+    $limit  = count($data[0]);
     for ($i = 0; $i < $limit; $i++) {
-        $names .= "`" . $data[0][$i] . "`";
+        $names  .= "`" . $data[0][$i] . "`";
         $values .= "'" . $data[1][$i] . "'";
-        if ($i < $limit) {
-            $names .= ",";
+        if ($i < $limit - 1) {
+            $names  .= ",";
             $values .= ",";
         }
     }
-    $sql .= $names . ") VALUES (" . $values . ");";
-
-    $result = null;
-    $pdo = connect($hostname, $dbname, $user, $password);
+    $sql .= $names . " ) VALUES ( " . $values . " );";
     $result = command($pdo, $sql);
-    $pdo = null;
+
+    return !is_null($result);
+}
+
+// Função Atualizar por Identificador (chave primária)
+function update($pdo, $table, $name, $value, $primaryKey, $key)
+{
+    $sql = "UPDATE `" . $table . "` SET `" . $name . "` = '" . $value . "' WHERE `" . $primaryKey . "` = '" . $key . "';";
+    $result = command($pdo, $sql);
 
     return !is_null($result);
 }
 
 // Função Listar Todos
-function list_all_itens($hostname, $dbname, $user, $password, $table)
+function list_all_itens($pdo, $table)
 {
-    $result = null;
-    $pdo = connect($hostname, $dbname, $user, $password);
     $sql = "SELECT * FROM `" . $table . "`;";
     $result = command($pdo, $sql);
-    $pdo = null;
 
     return $result;
 }
 
-// Função Listar por Identificador
-function list_by_id($hostname, $dbname, $user, $password, $table)
+// Função Listar por Identificador (chave primária)
+function list_by_id($pdo, $table, $primaryKey, $value)
 {
-    $result = null;
-    $pdo = connect($hostname, $dbname, $user, $password);
-    $sql = "SELECT `id` FROM `" . $table . "` WHERE `id` = '" . $id . "';";
-    $result = command($pdo, $sql);
-    if ($result) {
-        $count = $result->rowCount();
-        if ($count != 1) {
-            echo "Encontrados " . $count . " registros para o ID " . $id . "!" . PHP_EOL;
-            return false;
-        }
-    }
-    $pdo = null;
-
-    return $result;
+    return find_by_key($pdo, $table, $primaryKey, $value);
 }
 
 // Função Pesquisar por palavra-chave
-function find_by_key($pdo, $table, $name, $key)
+function find_by_key($pdo, $table, $name, $value)
 {
     $result = null;
-    $sql = "SELECT * FROM `" . $table . "` WHERE `" . $name . "` = '" . $key . "';";
+    $sql = "SELECT * FROM `" . $table . "` WHERE `" . $name . "` = '" . $value . "';";
     $result = command($pdo, $sql);
     if ($result) {
         $count = $result->rowCount();
         if ($count != 1) {
-            echo "Encontrados na tabela " . $table . ", " . $count . " registros para a coluna " . $key . "!" . PHP_EOL;
             return null;
         }
     }
@@ -114,28 +102,55 @@ function find_by_key($pdo, $table, $name, $key)
     return $result;
 }
 
-// Função Deletar por Identificador
-function delete_by_id($hostname, $dbname, $user, $password, $table, $id)
+// Função Deletar por Identificador (chave primária)
+function delete_by_id($pdo, $table, $primaryKey, $value)
 {
-    $result = null;
-    $pdo = connect($hostname, $dbname, $user, $password);
-    // Checar se existe ID.
-    $sql = "SELECT `id` FROM `" . $table . "` WHERE `id` = '" . $id . "';";
+    $sql = "DELETE FROM `" . $table . "` WHERE `" . $primaryKey . "`='" . $value . "';";
     $result = command($pdo, $sql);
-    if ($result) {
-        $count = $result->rowCount();
-        if ($count != 1) {
-            echo "Encontrados " . $count . " registros para o ID " . $id . "!" . PHP_EOL;
-            return false;
-        }
-
-        // Deletar.
-        $sql = "DELETE FROM `" . $table . "` WHERE `" . $table . "`.`id` = '" . $id . "';";
-        $result = command($pdo, $sql);
-    }
-    $pdo = null;
 
     return !is_null($result);
+}
+
+// Função extra : Html Table SQL
+function table($names, $data) {
+    $html  = "<table border = '1'>";
+    for ($i = 0; $i < count($names); $i++) {
+        $html .= "<th>" . $names[$i] . "</th>";
+    }
+    // PDO::FETCH_ASSOC: retorna um array indexado pelo nome da coluna como retornada no resultado.
+    // fetch()         : método de busca.
+    while($row = $data->fetch(PDO::FETCH_ASSOC)) {
+        $html .= "<tr>";
+        for ($i = 0; $i < count($names); $i++) {
+            $html .= "<td>" . $row[$names[$i]] . "</td>";
+        }
+        $html .= "</tr>";
+    }
+    $html .= "</table>";
+
+    return $html;
+}
+
+// Função extra : Html Table
+function table2($data) {
+    $html = "";
+    if (is_array($data)) {
+        $html = "<table border = '1'>";
+        foreach ($data as $item) {
+            $html .= "<tr>";
+            if (is_array($item)) {
+                foreach ($item as $subitem) {
+                    $html .= "<td>" . $subitem. "</td>";
+                }
+            } else {
+                $html .= "<td>" . $item . "</td>";
+            }
+            $html .= "</tr>";
+        }
+        $html .= "</table>";
+    } 
+
+    return $html;
 }
 
 // tools.php

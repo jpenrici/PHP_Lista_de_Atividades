@@ -61,77 +61,63 @@
         require "./config/config.php";
 
         // Conectar com o BD usando PDO (PHP Data Objects).
-        // $pdo = connect($hostname, $dbname, $user, $password);
-        // if ($pdo) {
-        //     echo "Conexão bem sucedida!<br>";
-        // } 
+        $pdo = connect($hostname, $dbname, $user, $password);
+        if ($pdo) {
+            echo "Conexão bem sucedida!<br>";
+        } 
 
         // Inserir dados na Tabela "products".
+        $names = ["id", "name", "description", "price", "discount", "quantity", "image", "createdAt", "updatedAt", "category_id"];
         
         // Campos
-        $name        = "Produto 1";
-        $description = "Descrição do produto 1";
+        $name        = "Produto ";
+        $description = "Descrição do produto ";
         $price       = 19.90;
         $discount    = 5;
         $quantity    = 10;
         $image       = "https://www.php.net/images/logos/new-php-logo.svg";
         $category_id = "1";
 
-        for ($id = 1; $id < 5; $id++) {
+        for ($i = 1; $i < 5; $i++) {
+            date_default_timezone_set("America/Sao_Paulo");
+            $currentDate = date('Y-m-d H:i:s', time()); // CURRENT_TIMESTAMP
             $data = [
-                ["id", "name", "description", "price", "discount", "quantity", "image", "createdAt", "updatedA", "category_id"],
-                [$id, $name, $description, $price, $discount, $quantity, $image, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, $category_id]
+                $names,
+                [$i, $name . $i, $description . $i, $price, $discount, $quantity, $image, $currentDate, $currentDate, $category_id]
             ];
-            if (insert($hostname, $dbname, $user, $password, $table, $data)) {
+            if (insert($pdo, 'product', $data)) {
                 echo "Novo dado inserido!<br>";
             }
         }
 
         // Listar todos os dados inseridos.
-        $result = list_all_itens($hostname, $dbname, $user, $password, 'product');
+        $result = list_all_itens($pdo, 'product');
         if ($result) {
-            // Preparar exibição.
             $total = $result->rowCount();   // rowCount(): método retorna quantidade de linhas.
-            $htmlTable  = "<table border = '1'>";
-            $htmlTable .= "<th>id</th><th>name</th><th>description</th><th>price</th><th>discount</th>
-                           <th>quantity</th><th>image</th><th>createdAt</th><th>updatedAt</th><th>category_id</th>";
-            // PDO::FETCH_ASSOC: retorna um array indexado pelo nome da coluna como retornada no resultado.
-            // fetch()         : método de busca.
-            while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                $htmlTable .= "<tr>";
-                $htmlTable .= "<td>" . $row['id']              . "</td>";
-                $htmlTable .= "<td>" . $row['name']            . "</td>";
-                $htmlTable .= "<td>" . $row['description']     . "</td>";
-                $htmlTable .= "<td>" . $row['price']           . "</td>";
-                $htmlTable .= "<td>" . $row['discount']        . "</td>";
-                $htmlTable .= "<td>" . $row['quantity']        . "</td>";
-                $htmlTable .= "<td><img src='" . $row['image'] . "' width='24px'></td>";
-                $htmlTable .= "<td>" . $row['createdAt']       . "</td>";
-                $htmlTable .= "<td>" . $row['updatedAt']       . "</td>";
-                $htmlTable .= "<td>" . $row['category_id']     . "</td>";
-                $htmlTable .= "</tr>";
-            }
-            $htmlTable .= "</table>";
-
+            $htmlTable = table($names, $result);
             // Exibir
             echo "<p>Encontrados $total itens na Tabela 'product'.</p>";
             echo $htmlTable;
         }
 
         // Atualizar dado.
-        $sql = "UPDATE `product` SET `updatedAt`= CURRENT_TIMESTAMP WHERE `id` = '1';";
-        if (command($pdo, $sql)) {
+        if (update($pdo, "product", "price", 1000, "id", 2)) {
             echo "Novo dado atualizado!<br>";
+        }
+
+        // Pesquisar dados.
+        $result = find_by_key($pdo, 'product', "id", 2);
+        if ($result) {
+            $htmlTable = table($names, $result);
+            echo $htmlTable;
         }
 
         // Deletar dados.
         for ($i = 1; $i < 5; $i++) {
-            if (delete_by_id($hostname, $dbname, $user, $password, 'product', $i)) {
+            if (delete_by_id($pdo, "product", "id", $i)) {
                 echo "Dado deletado!<br>";
             }
         }
-
-        // Pesquisar dados.
 
         // Desconectar o Banco de Dados.
         $pdo = null;
