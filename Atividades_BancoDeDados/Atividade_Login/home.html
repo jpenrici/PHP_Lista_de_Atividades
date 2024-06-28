@@ -1,0 +1,38 @@
+<!--
+        Atividade Formulários, Métodos GET e POST e Banco de Dados.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade de BackEnd</title>
+</head>
+
+<body>
+    <!-- Desenvolva os códigos para exibir no navegador as respostas. -->
+
+    <h1>Atividade Login</h1>
+
+    <!--
+    Form:
+        action : atributo que indica o arquivo que irá processar os dados enviados ao clicar em "submit".
+        method : atributo que indica como os dados serão enviados para o arquivo que irá processá-los.
+    Input:
+        submit : tipo que cria um botão para envio de todos os valores do formulário.
+    -->
+    <form action="response.php" method="POST">
+        <label for="user">Usuário:</label><br>
+        <input type="text" name="user" id="user" placeholder="Digite o usuário" required><br>
+        <label for="password">Senha:</label><br>
+        <input type="password" name="password" id="password" placeholder="Digite a senha" required><br>
+        <input type="submit" value="Entrar">
+    </form>
+
+    <hr>
+
+</body>
+
+</html>
