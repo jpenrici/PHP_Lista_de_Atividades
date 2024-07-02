@@ -64,7 +64,7 @@ function is_null_or_empty($data)
     return (is_null($data) || empty($data));
 }
 
-// Função Inserir.
+// Função Inserir para condições especiais.
 function insert($pdo   /* conexão ativa */,
                 $table /* nome da tabela */,
                 $data  /* array com nomes e valorers */) 
@@ -198,6 +198,5 @@ function table2($data) {
 
     return $html;
 }
-
 
 // db_functions.php

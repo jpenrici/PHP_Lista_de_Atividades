@@ -31,7 +31,7 @@ function create_product($database, $name, $description, $price, $discount, $quan
     if ($result) {
         $count = $result->rowCount();
         if ($count > 0) {
-            // echo "Found " . $count . " entries for " . $name . "! New user has not been created!" . PHP_EOL;
+            // echo "Encontrado " . $count . " registros para " . $name . "! Novo registro não será criado!" . PHP_EOL;
             return false;
         }
     }
@@ -109,7 +109,7 @@ function update_product_by_id($database, $id, $name, $description, $price, $disc
         $new_image = (empty($image) || is_null($image)) ? $data['image'] : $image;
         $new_category_id = (empty($category_id) || is_null($category_id)) ? $data['category_id'] : $category_id;
         $updateAt = date("Y-m-d H:i:s");
-        // echo "Values: " . $id . ", " . $new_name . ", " . $new_description . ", " . $new_price . ", " . $new_discount . ", " . $new_quantity;
+        // echo "Valores: " . $id . ", " . $new_name . ", " . $new_description . ", " . $new_price . ", " . $new_discount . ", " . $new_quantity;
         // echo ", " . $new_image . ", " . $new_category_id . ", " . $updateAt . PHP_EOL;
 
         $sql = "UPDATE `product` SET `name` = '" . $new_name . "', `description` = '" . $new_description . "', `price` = '" . $new_price;
@@ -131,12 +131,30 @@ function update_product_quantity_by_id($database, $id, $quantity)
 
 function delete_product_by_id($database, $id)
 {
-    return delete_by_id($database['hostname'], $database['dbname'], $database['user'], $database['password'], 'product', $id);
+    // Conectar.
+    $pdo = connect($database['hostname'], $database['dbname'], $database['user'], $database['password']);
+    
+    // Procurar.
+    $result = delete_by_id($pdo, 'product', 'id', $id);
+
+    // Desconectar.
+    $pdo = null;
+
+    return !$result;
 }
 
 function list_all_products($database)
 {
-    return list_all_itens($database['hostname'], $database['dbname'], $database['user'], $database['password'], 'product');
+   // Conectar.
+   $pdo = connect($database['hostname'], $database['dbname'], $database['user'], $database['password']);
+
+   // Procurar.
+   $result = list_all_itens($pdo, 'product');
+   
+   // Desconectar.
+   $pdo = null;
+   
+   return $result;
 }
 
 function current_quantity($pdo, $id, $quantity)
@@ -170,9 +188,9 @@ function current_quantity($pdo, $id, $quantity)
     $data = $result->fetch(PDO::FETCH_ASSOC);
     $free = (int)$data['quantity'] - (int)$quantity;
     if ($free < 1) {
-        echo "Quantity requested: " . $quantity . PHP_EOL;
-        echo "Quantity in stock : " . $data['quantity'] . PHP_EOL;
-        echo "Quantity of product id " . $id . " insufficient to reserve purchase." . PHP_EOL;
+        echo "Quantidade requerida : " . $quantity . PHP_EOL;
+        echo "Quantidade em estoque: " . $data['quantity'] . PHP_EOL;
+        echo "Quantidade de produto com id " . $id . " insuficiente para reservar compra." . PHP_EOL;
         return 0;
     }
 

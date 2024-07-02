@@ -28,7 +28,7 @@ function create_user($database, $username, $email, $password1, $password2)
     if ($result) {
         $count = $result->rowCount();
         if ($count > 0) {
-            // echo "Found " . $count . " entries for " . $username . "! New user has not been created!" . PHP_EOL;
+            // echo "Encontrado " . $count . " registros para " . $username . "! Novo registro não será criado!" . PHP_EOL;
             return false;
         }
     }
@@ -95,7 +95,7 @@ function update_user_by_id($database, $id, $username, $email, $password)
         $new_email = (empty($email) || is_null($email)) ? $data['email'] : $email;
         $new_password = (empty($password) || is_null($password)) ? $data['password'] : $password;
         $updateAt = date("Y-m-d H:i:s");
-        // echo "Values: " . $id . ", " . $new_username . ", " . $new_email . ", " . $new_password . ", " . $updateAt . PHP_EOL;
+        // echo "Valores: " . $id . ", " . $new_username . ", " . $new_email . ", " . $new_password . ", " . $updateAt . PHP_EOL;
 
         $sql = "UPDATE `user` SET `username` = '" . $new_username . "', `email` = '" . $new_email . "', ";
         $sql .= "`password` = '" . $new_password . "', `updatedAt` = '" . $updateAt . "' WHERE `user`.`id` = " . $id . ";";
@@ -110,12 +110,30 @@ function update_user_by_id($database, $id, $username, $email, $password)
 
 function delete_user_by_id($database, $id)
 {
-    return delete_by_id($database['hostname'], $database['dbname'], $database['user'], $database['password'], 'user', $id);
+   // Conectar.
+   $pdo = connect($database['hostname'], $database['dbname'], $database['user'], $database['password']);
+    
+   // Procurar.
+   $result = delete_by_id($pdo, 'user', 'id', $id);
+
+   // Desconectar.
+   $pdo = null;
+
+   return !$result;
 }
 
 function list_all_users($database)
 {
-    return list_all_itens($database['hostname'], $database['dbname'], $database['user'], $database['password'], 'user');
+   // Conectar.
+   $pdo = connect($database['hostname'], $database['dbname'], $database['user'], $database['password']);
+
+   // Procurar.
+   $result = list_all_itens($pdo, 'user');
+   
+   // Desconectar.
+   $pdo = null;
+   
+   return $result;
 }
 
 // crud_user.php

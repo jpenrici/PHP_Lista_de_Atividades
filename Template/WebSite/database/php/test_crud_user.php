@@ -14,10 +14,10 @@ $result = read_user_by_username($database, $username);
 echo "Encontrado " . ($result->rowCount()) . " registros para " . $username . "!" . PHP_EOL;
 
 $result = update_user_by_id($database, '10', "", "newemail@provedor1.com", "");
-echo "Atualizar id ... " . ($result ? "ok" : "ignorado") . PHP_EOL;
+echo "Atualizar por 'id' ... " . ($result ? "ok" : "ignorado") . PHP_EOL;
 
 $result = delete_user_by_id($database, '10');
-echo "Deletar id ... " . ($result ? "ok" : "ignorado") . PHP_EOL;
+echo "Deletar por 'id' ... " . ($result ? "ok" : "ignorado") . PHP_EOL;
 
 $result = list_all_users($database);
 echo "Encontrado " . ($result->rowCount()) . " registros!" . PHP_EOL;
