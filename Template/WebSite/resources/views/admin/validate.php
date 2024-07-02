@@ -4,8 +4,22 @@
     // Teste
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-        // Capturando os dados vindos do Login.
-        $_SESSION["user"] = $_POST['username'];
+        $userLogin = $_POST['username'];
+        $passwordLogin = $_POST['password'];
+
+        // Conexão com BD.
+        require "../../../database/config/config.php";
+        require "../../../database/php/crud_user.php";
+
+        // Validar
+        $result = read_user_by_username($database, $userLogin);
+        while($row = $result->fetch(PDO::FETCH_ASSOC)) {
+            if ($userLogin == $row['username'] && $passwordLogin == $row['password']) {
+                // Criando Sessão.
+                $_SESSION["user"] = $userLogin;
+                break;
+            }
+        }
     }
 ?>
 
