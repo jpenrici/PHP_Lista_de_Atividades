@@ -1,0 +1,14 @@
+/* Header */
+.header {
+    padding: 16%;
+    text-align: center;
+    background: url('../images/banners/company.svg') no-repeat center center;
+    background-size: cover;
+    color: white;
+}
+
+/* 
+
+No responsive styling handling in this build!
+
+*/
