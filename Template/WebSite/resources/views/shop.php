@@ -10,7 +10,7 @@
     $result = list_all_products($database);
     $index = 0;
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
-        $products[$index++] = [$row['name'], $row['image'], $row['description'], $row['price'], $row['discount']];
+        $products[$index++] = [$row[$id], $row['name'], $row['image'], $row['description'], $row['price'], $row['discount']];
     }
     // var_dump($products);
 
@@ -39,12 +39,11 @@
     <div class="content">
         <!-- Line 1 - Products -->
         <div class="row">
-            <h2>SHOP</h2>
             <!-- Column -->
             <?php
             for ($i = 0; $i < count($products); $i++) {
-                $content = fullCard($products[$i][0], "../images/products/svg/" . $products[$i][1] . ".svg",
-                                 $products[$i][2], $products[$i][3], $products[$i][4]);
+                $content = fullCard($products[$i][0], $products[$i][1], "../images/products/svg/" . $products[$i][2] . ".svg",
+                                 $products[$i][3], $products[$i][4], $products[$i][5]);
                 $html = "<div class='column'>
                             <!-- Card -->
                             <div class='card'>
