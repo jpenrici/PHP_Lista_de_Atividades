@@ -1,0 +1,66 @@
+/* Global */
+@import url("global.css");
+
+/* Body */
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    background-color: var(--btnFontColor);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Nav Bar */
+.navbar {
+    overflow: hidden;
+    background-color: #6a64a0;
+}
+
+.navbar a {
+    float: left;
+    display: block;
+    color: var(--fontColor);
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+.navbar a.right {
+    float: right;
+}
+
+.navbar a:hover {
+    background-color: var(--bg);
+    color: var(--fontColor);
+}
+
+.navbar .btn {
+    float: right;
+    text-align: center;
+    padding: 14px 20px;
+    border-radius: 50%;
+    border: none;
+    color: var(--btnFontColor);
+    background-color: var(--btnBg);
+}
+
+.navbar img {
+    width: 48px;
+}
+
+.btn:focus {
+    outline-style: none;
+}
+
+h4 {
+    padding-left: 8px;
+    color: var(--fontColor);
+}
+
+/* Separator */
+hr.colored {
+    border: 10px solid var(--btnBg);
+    border-radius: 2px;
+}
