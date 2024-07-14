@@ -1,1 +1,0 @@
-Pasta com os principais recursos PHP, HTML, CSS, JS, Imagens de uso comum.
