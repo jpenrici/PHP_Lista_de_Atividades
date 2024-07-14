@@ -199,5 +199,4 @@ function table2($data) {
     return $html;
 }
 
-
 // db_functions.php
