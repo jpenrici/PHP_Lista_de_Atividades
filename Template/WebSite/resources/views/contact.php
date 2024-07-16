@@ -36,7 +36,9 @@
                 echo "<hr>Nome: $name<br>E-mail: $email<br>Assunto: $subject<br>";
             }
         } else {
-            session_start();
+            if (!session_status()) {
+                session_start();
+            }
 
             $currentUser = "";
             $currentEmail = "";
