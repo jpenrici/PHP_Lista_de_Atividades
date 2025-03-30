@@ -1,6 +1,6 @@
 # Lista_de_Atividades
 
-Repositório temporário para armazenamento de Atividades.<br>
+Repositório temporário para armazenamento de Atividades de PHP.<br>
 
 # Dica
 
@@ -20,5 +20,5 @@ Faça o download, clone ou atualize o repositório para obter os exercícios res
 Pra facilitar segue exemplo:
 
 ```
-  git clone https://github.com/jpenrici/Lista_de_Atividades.git
+  git clone https://github.com/jpenrici/PHP_Lista_de_Atividades.git
 ```
